@@ -39,17 +39,47 @@ else if (playerSelection.toLowerCase()=='scissor'&& computerSelection=='rock'){
 }
 else
  console.log("It is a Draw"+playerSelection+"Equalls"+computerSelection)
+ return "Draw"
 }
 console.log(PlayOneRound("Rock",getComputerChoice()))
-function game ()
+function game (playerSelection)
 {
+    const computerSelection =getComputerChoice()
+    const str=PlayOneRound(playerSelection,computerSelection);
+    const div=document.createElement('div')
+    div.textContent=str;
+    alert(str)
+    if(str=="Player"){
+        PlayerCount +=1
+      }
+      else
+      ComputerCount+=1
+    if(PlayerCount >=5)
+    {
+    alert("The Winner is the Player, He Won 5 Rounds")
+    PlayerCount=0
+    ComputerCount=0
+    }
+    else if (ComputerCount>= 5)
+    alert("The Winner is the Computer, He Won 5 Rounds")
+    PlayerCount=0
+    ComputerCount=0
+
+}
+
+
+    /* 
     let PlayerCount=0
     let ComputerCount=0
+    str=''
     for (let i=0 ; i<5 ; i++)
     {
-        const playerSelection=prompt("Pick Rock, Paper or Scissor")
         const computerSelection =getComputerChoice()
-        str=PlayOneRound(playerSelection,computerSelection)
+        window.addEventListener('click',(btn)=>{
+            const playerSelection=btn.innerText
+            str=PlayOneRound(playerSelection,computerSelection)
+        }
+        )
       if(str=="Player"){
         PlayerCount +=1
       }
@@ -57,8 +87,10 @@ function game ()
       ComputerCount+=1
     }
     if(PlayerCount>ComputerCount)
-    console.log("The Winner is the Player, He Won"+PlayerCount+"Rounds")
+    console.log("The Winner is the Player, He Won "+PlayerCount+" Rounds")
     else
-    console.log("The Winner is the Computer, He Won"+ComputerCount+"Rounds")
-}
-game()
+    console.log("The Winner is the Computer, He Won "+ComputerCount+" Rounds")
+    */
+
+    let PlayerCount=0
+    let ComputerCount=0
